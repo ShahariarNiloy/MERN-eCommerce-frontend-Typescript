@@ -37,10 +37,10 @@ export const getProduct =
     keyword = "",
     currentPage = 1,
     price = [0, 25000],
-    category: any,
+    category?: any,
     ratings = 0
-  ) =>
-  async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
+  ): any =>
+  async (dispatch: any) => {
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
 
@@ -254,7 +254,6 @@ export const deleteReviews =
   };
 
 // Clearing Errors
-export const clearErrors =
-  () => async (dispatch: (arg0: { type: string }) => void) => {
-    dispatch({ type: CLEAR_ERRORS });
-  };
+export const clearErrors = (): any => async (dispatch: any) => {
+  dispatch({ type: CLEAR_ERRORS });
+};
