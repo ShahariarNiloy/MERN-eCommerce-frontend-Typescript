@@ -25,3 +25,41 @@ export const ORDER_DETAILS_SUCCESS = "ORDER_DETAILS_SUCCESS";
 export const ORDER_DETAILS_FAIL = "ORDER_DETAILS_FAIL";
 
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
+export interface ShippingInfoTypes {
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+  pinCode: number;
+  phoneNo: number;
+}
+
+export interface PaymentInfoTypes {
+  id: string;
+  status: string;
+}
+
+export interface OrderItemsTypes {
+  name: string;
+  price: number;
+  quantity: number;
+  image: string;
+  product: string;
+}
+
+export interface OrderTypes {
+  shippingInfo: ShippingInfoTypes;
+  orderItems: OrderItemsTypes[];
+  user: string;
+
+  paymentInfo: PaymentInfoTypes;
+  paidAt: Date;
+  itemsPrice: number;
+  taxPrice: number;
+  shippingPrice: number;
+  totalPrice: number;
+  orderStatus: string;
+  deliveredAt: Date;
+  createdAt: Date;
+}

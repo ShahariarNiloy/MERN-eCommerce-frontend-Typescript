@@ -30,6 +30,9 @@ import {
   DELETE_REVIEW_FAIL,
   CLEAR_ERRORS,
 } from "../types/productTypes";
+import { RootState } from "../store";
+import { AnyAction } from "redux";
+import { Dispatch } from "react";
 
 // Get All Products
 export const getProduct =
@@ -65,24 +68,24 @@ export const getProduct =
   };
 
 // Get All Products For Admin
-export const getAdminProduct =
-  () => async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
-    try {
-      dispatch({ type: ADMIN_PRODUCT_REQUEST });
+export const getAdminProduct: any = async (dispatch: any) => {
+  try {
+    dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
-      const { data } = await axios.get("/api/v1/admin/products");
+    const { data } = await axios.get("/api/v1/admin/products");
 
-      dispatch({
-        type: ADMIN_PRODUCT_SUCCESS,
-        payload: data.products,
-      });
-    } catch (error: any) {
-      dispatch({
-        type: ADMIN_PRODUCT_FAIL,
-        payload: error.response.data.message,
-      });
-    }
-  };
+    dispatch({
+      type: ADMIN_PRODUCT_SUCCESS,
+      payload: data.products,
+    });
+  } catch (error: any) {
+    dispatch({
+      type: ADMIN_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+  return;
+};
 
 // Create Product
 export const createProduct =

@@ -50,3 +50,14 @@ export const DELETE_USER_FAIL = "DELETE_USER_FAIL";
 export const DELETE_USER_RESET = "DELETE_USER_RESET";
 
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
+export interface UserType {
+  name: string;
+  email: string;
+  password: string;
+  avatar: { public_id: string; url: string };
+  role?: string;
+  createdAt?: Date;
+  resetPasswordToken: string;
+  resetPasswordExpire: Date;
+}

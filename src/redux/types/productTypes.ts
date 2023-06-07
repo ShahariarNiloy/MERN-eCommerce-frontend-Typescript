@@ -40,3 +40,29 @@ export const DELETE_REVIEW_RESET = "DELETE_REVIEW_RESET";
 export const DELETE_REVIEW_FAIL = "DELETE_REVIEW_FAIL";
 
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
+export interface ImagesTypes {
+  public_id: string;
+  url: string;
+}
+
+export interface ReviewsTypes {
+  user: string;
+  name: string;
+  rating: number;
+  comment: string;
+}
+
+export interface ProductTypes {
+  name: string;
+  description: string;
+  price: number;
+  ratings?: number;
+  images: ImagesTypes[];
+  category: string;
+  stock: number;
+  numOfReviews?: number;
+  reviews: ReviewsTypes[];
+  user?: string;
+  createdAt: Date;
+}

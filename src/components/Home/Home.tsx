@@ -7,21 +7,22 @@ import { useAlert } from "react-alert";
 import MetaData from "../Layout/MetaData";
 import Loader from "../Layout/Loader/Loader";
 import { clearErrors, getProduct } from "../../redux/actions/productActions";
+import { useAppDispatch } from "../../redux/hooks";
 
 const Home = () => {
-  //   const alert = useAlert();
-  const dispatch = useDispatch();
+  const alert = useAlert();
+  const dispatch = useAppDispatch();
   const { loading, error, products } = useSelector(
     (state: any) => state.products
   );
 
-  //   useEffect(() => {
-  //     if (error) {
-  //       alert.error(error);
-  //       dispatch(clearErrors());
-  //     }
-  //     dispatch(getProduct());
-  //   }, [dispatch, error, alert]);
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getProduct());
+  }, [dispatch, error, alert]);
 
   return (
     <Fragment>
