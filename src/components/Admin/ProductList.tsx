@@ -5,7 +5,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import React, { Fragment, useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   clearErrors,
   deleteProduct,
@@ -17,10 +17,11 @@ import {
   ProductTypes,
 } from "../../redux/types/productTypes";
 import MetaData from "../Layout/MetaData";
-import SideBar from "./Sidebar";
 import "./ProductList.css";
+import SideBar from "./Sidebar";
 
-const ProductList: React.FC<{ history: any }> = ({ history }) => {
+const ProductList: React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const alert = useAlert();
@@ -49,12 +50,12 @@ const ProductList: React.FC<{ history: any }> = ({ history }) => {
 
     if (isDeleted) {
       alert.success("Product Deleted Successfully");
-      history.push("/admin/dashboard");
+      navigate("/admin/dashboard");
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
 
     dispatch(getAdminProduct());
-  }, [dispatch, alert, error, deleteError, history, isDeleted]);
+  }, [dispatch, alert, error, deleteError, navigate, isDeleted]);
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },

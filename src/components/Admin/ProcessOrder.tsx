@@ -10,17 +10,16 @@ import { RootState } from "../../redux/store";
 import { OrderTypes, UPDATE_ORDER_RESET } from "../../redux/types/orderTypes";
 import Loader from "../Layout/Loader/Loader";
 import MetaData from "../Layout/MetaData";
-import SideBar from "./Sidebar";
 import "./ProcessOrder.css";
+import SideBar from "./Sidebar";
 
 interface RouteParams {
   id: string;
 }
 
 const ProcessOrder: React.FC<{
-  history: any;
   match: { params: RouteParams };
-}> = ({ history, match }) => {
+}> = ({ match }) => {
   const [status, setStatus] = useState("");
   const dispatch = useDispatch();
   const alert = useAlert();

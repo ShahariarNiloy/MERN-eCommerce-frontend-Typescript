@@ -7,6 +7,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import "./ProductReviews.css";
 
+import { useNavigate } from "react-router-dom";
 import {
   clearErrors,
   deleteReviews,
@@ -24,7 +25,8 @@ interface Review {
   name: string;
 }
 
-const ProductReviews: React.FC<{ history: any }> = ({ history }) => {
+const ProductReviews: React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const alert = useAlert();
@@ -64,10 +66,10 @@ const ProductReviews: React.FC<{ history: any }> = ({ history }) => {
 
     if (isDeleted) {
       alert.success("Review Deleted Successfully");
-      history.push("/admin/reviews");
+      navigate("/admin/reviews");
       dispatch({ type: DELETE_REVIEW_RESET });
     }
-  }, [dispatch, alert, error, deleteError, history, isDeleted, productId]);
+  }, [dispatch, alert, error, deleteError, navigate, isDeleted, productId]);
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "Review ID", minWidth: 200, flex: 0.5 },

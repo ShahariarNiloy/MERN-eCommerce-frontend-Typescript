@@ -7,6 +7,7 @@ import StorageIcon from "@material-ui/icons/Storage";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   clearErrors,
   getProductDetails,
@@ -20,10 +21,8 @@ import {
 import MetaData from "../Layout/MetaData";
 import SideBar from "./Sidebar";
 
-const UpdateProduct: React.FC<{ history: any; match: any }> = ({
-  history,
-  match,
-}) => {
+const UpdateProduct: React.FC<{ match: any }> = ({ match }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -81,14 +80,14 @@ const UpdateProduct: React.FC<{ history: any; match: any }> = ({
 
     if (isUpdated) {
       alert.success("Product Updated Successfully");
-      history.push("/admin/products");
+      navigate("/admin/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
   }, [
     dispatch,
     alert,
     error,
-    history,
+    navigate,
     isUpdated,
     productId,
     product,

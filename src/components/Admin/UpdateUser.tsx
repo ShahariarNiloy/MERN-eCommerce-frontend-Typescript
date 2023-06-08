@@ -1,24 +1,25 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import PersonIcon from "@material-ui/icons/Person";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
-import SideBar from "./Sidebar";
-import { RootState } from "../../redux/store";
-import { UPDATE_USER_RESET, UserType } from "../../redux/types/userTypes";
-import { getUserDetails, updateUser } from "../../redux/actions/userActions";
+import React, { Fragment, useEffect, useState } from "react";
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { clearErrors } from "../../redux/actions/productActions";
-import MetaData from "../Layout/MetaData";
+import { getUserDetails, updateUser } from "../../redux/actions/userActions";
+import { RootState } from "../../redux/store";
+import { UPDATE_USER_RESET } from "../../redux/types/userTypes";
 import Loader from "../Layout/Loader/Loader";
+import MetaData from "../Layout/MetaData";
+import SideBar from "./Sidebar";
 
 interface UserProps {
-  history: any;
   match: any;
 }
 
-const UpdateUser: React.FC<UserProps> = ({ history, match }) => {
+const UpdateUser: React.FC<UserProps> = ({ match }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -58,10 +59,10 @@ const UpdateUser: React.FC<UserProps> = ({ history, match }) => {
 
     if (isUpdated) {
       alert.success("User Updated Successfully");
-      history.push("/admin/users");
+      navigate("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     }
-  }, [dispatch, alert, error, history, isUpdated, updateError, user, userId]);
+  }, [dispatch, alert, error, navigate, isUpdated, updateError, user, userId]);
 
   const updateUserSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

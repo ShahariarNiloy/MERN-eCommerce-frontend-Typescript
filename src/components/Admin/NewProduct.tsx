@@ -7,6 +7,7 @@ import StorageIcon from "@material-ui/icons/Storage";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { clearErrors, createProduct } from "../../redux/actions/productActions";
 import { NEW_PRODUCT_RESET } from "../../redux/types/productTypes";
 import MetaData from "../Layout/MetaData";
@@ -21,7 +22,8 @@ interface RootState {
   };
 }
 
-const NewProduct: React.FC<{ history: any }> = ({ history }) => {
+const NewProduct: React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -55,10 +57,10 @@ const NewProduct: React.FC<{ history: any }> = ({ history }) => {
 
     if (success) {
       alert.success("Product Created Successfully");
-      history.push("/admin/dashboard");
+      navigate("/admin/dashboard");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, history, success]);
+  }, [dispatch, alert, error, navigate, success]);
 
   const createProductSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
