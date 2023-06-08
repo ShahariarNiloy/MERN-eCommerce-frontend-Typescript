@@ -89,8 +89,8 @@ export const getAdminProduct: any = async (dispatch: any) => {
 
 // Create Product
 export const createProduct =
-  (productData: any) =>
-  async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
+  (productData: any): any =>
+  async (dispatch: any) => {
     try {
       dispatch({ type: NEW_PRODUCT_REQUEST });
 
@@ -147,7 +147,7 @@ export const updateProduct =
 
 // Delete Product
 export const deleteProduct =
-  (id: any) =>
+  (id: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: DELETE_PRODUCT_REQUEST });

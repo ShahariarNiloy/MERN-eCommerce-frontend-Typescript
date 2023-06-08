@@ -63,25 +63,24 @@ export const myOrders =
   };
 
 // Get All Orders (admin)
-export const getAllOrders =
-  () => async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
-    try {
-      dispatch({ type: ALL_ORDERS_REQUEST });
+export const getAllOrders = (): any => async (dispatch: any) => {
+  try {
+    dispatch({ type: ALL_ORDERS_REQUEST });
 
-      const { data } = await axios.get("/api/v1/admin/orders");
+    const { data } = await axios.get("/api/v1/admin/orders");
 
-      dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
-    } catch (error: any) {
-      dispatch({
-        type: ALL_ORDERS_FAIL,
-        payload: error.response.data.message,
-      });
-    }
-  };
+    dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
+  } catch (error: any) {
+    dispatch({
+      type: ALL_ORDERS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // Update Order
 export const updateOrder =
-  (id: any, order: any) =>
+  (id: any, order: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: UPDATE_ORDER_REQUEST });
@@ -108,7 +107,7 @@ export const updateOrder =
 
 // Delete Order
 export const deleteOrder =
-  (id: any) =>
+  (id: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: DELETE_ORDER_REQUEST });
@@ -126,7 +125,7 @@ export const deleteOrder =
 
 // Get Order Details
 export const getOrderDetails =
-  (id: any) =>
+  (id: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: ORDER_DETAILS_REQUEST });

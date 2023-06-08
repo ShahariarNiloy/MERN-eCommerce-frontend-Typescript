@@ -51,8 +51,8 @@ export interface OrderItemsTypes {
 export interface OrderTypes {
   shippingInfo: ShippingInfoTypes;
   orderItems: OrderItemsTypes[];
-  user: string;
-
+  user: string | any;
+  _id: string;
   paymentInfo: PaymentInfoTypes;
   paidAt: Date;
   itemsPrice: number;

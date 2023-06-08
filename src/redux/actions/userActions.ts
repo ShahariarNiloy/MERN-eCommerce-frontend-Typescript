@@ -198,17 +198,16 @@ export const resetPassword =
   };
 
 // get All Users
-export const getAllUsers =
-  () => async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
-    try {
-      dispatch({ type: ALL_USERS_REQUEST });
-      const { data } = await axios.get(`/api/v1/admin/users`);
+export const getAllUsers = (): any => async (dispatch: any) => {
+  try {
+    dispatch({ type: ALL_USERS_REQUEST });
+    const { data } = await axios.get(`/api/v1/admin/users`);
 
-      dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
-    } catch (error: any) {
-      dispatch({ type: ALL_USERS_FAIL, payload: error.response.data.message });
-    }
-  };
+    dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
+  } catch (error: any) {
+    dispatch({ type: ALL_USERS_FAIL, payload: error.response.data.message });
+  }
+};
 
 // get  User Details
 export const getUserDetails =

@@ -12,7 +12,7 @@ import { ProductTypes } from "../../redux/types/productTypes";
 import { UserType } from "../../redux/types/userTypes";
 import MetaData from "../Layout/MetaData";
 import Sidebar from "./Sidebar";
-import "./dashboard.css";
+import "./Dashboard.css";
 
 const Dashboard: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -40,6 +40,8 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     dispatch(getAdminProduct());
+    dispatch(getAllOrders());
+    dispatch(getAllUsers());
   }, []);
 
   let totalAmount = 0;
