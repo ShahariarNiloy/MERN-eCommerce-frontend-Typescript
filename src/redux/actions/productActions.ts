@@ -118,7 +118,7 @@ export const createProduct =
 
 // Update Product
 export const updateProduct =
-  (id: any, productData: any) =>
+  (id: any, productData: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: UPDATE_PRODUCT_REQUEST });
@@ -168,7 +168,7 @@ export const deleteProduct =
 
 // Get Products Details
 export const getProductDetails =
-  (id: any) =>
+  (id: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: PRODUCT_DETAILS_REQUEST });

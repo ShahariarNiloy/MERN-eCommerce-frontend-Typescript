@@ -211,7 +211,7 @@ export const getAllUsers = (): any => async (dispatch: any) => {
 
 // get  User Details
 export const getUserDetails =
-  (id: any) =>
+  (id: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: USER_DETAILS_REQUEST });
@@ -228,7 +228,7 @@ export const getUserDetails =
 
 // Update User
 export const updateUser =
-  (id: any, userData: any) =>
+  (id: any, userData: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: UPDATE_USER_REQUEST });
@@ -252,7 +252,7 @@ export const updateUser =
 
 // Delete User
 export const deleteUser =
-  (id: any) =>
+  (id: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: DELETE_USER_REQUEST });
