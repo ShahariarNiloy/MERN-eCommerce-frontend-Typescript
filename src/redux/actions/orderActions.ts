@@ -47,7 +47,8 @@ export const createOrder =
 
 // My Orders
 export const myOrders =
-  () => async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
+  (): any =>
+  async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: MY_ORDERS_REQUEST });
 
@@ -143,6 +144,6 @@ export const getOrderDetails =
 
 // Clearing Errors
 export const clearErrors =
-  () => async (dispatch: (arg0: { type: string }) => void) => {
+  (): any => async (dispatch: (arg0: { type: string }) => void) => {
     dispatch({ type: CLEAR_ERRORS });
   };
