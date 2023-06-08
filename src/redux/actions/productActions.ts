@@ -214,7 +214,7 @@ export const newReview =
 
 // Get All Reviews of a Product
 export const getAllReviews =
-  (id: any) =>
+  (id: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: ALL_REVIEW_REQUEST });
@@ -235,7 +235,7 @@ export const getAllReviews =
 
 // Delete Review of a Product
 export const deleteReviews =
-  (reviewId: any, productId: any) =>
+  (reviewId: any, productId: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: DELETE_REVIEW_REQUEST });

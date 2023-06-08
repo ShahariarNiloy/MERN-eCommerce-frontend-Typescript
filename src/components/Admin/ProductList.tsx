@@ -20,13 +20,6 @@ import MetaData from "../Layout/MetaData";
 import SideBar from "./Sidebar";
 import "./ProductList.css";
 
-interface Product {
-  _id: string;
-  Stock: number;
-  price: number;
-  name: string;
-}
-
 const ProductList: React.FC<{ history: any }> = ({ history }) => {
   const dispatch = useDispatch();
 
