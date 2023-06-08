@@ -24,7 +24,7 @@ import axios from "axios";
 
 // Create Order
 export const createOrder =
-  (order: any) =>
+  (order: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: CREATE_ORDER_REQUEST });

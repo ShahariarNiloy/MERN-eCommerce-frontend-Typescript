@@ -7,7 +7,7 @@ import axios from "axios";
 
 // Add to Cart
 export const addItemsToCart =
-  (id: any, quantity: any) =>
+  (id: any, quantity: any): any =>
   async (
     dispatch: (arg0: {
       type: string;
@@ -48,7 +48,7 @@ export const addItemsToCart =
 
 // REMOVE FROM CART
 export const removeItemsFromCart =
-  (id: any) =>
+  (id: any): any =>
   async (
     dispatch: (arg0: { type: string; payload: any }) => void,
     getState: () => {
@@ -70,7 +70,7 @@ export const removeItemsFromCart =
 
 // SAVE SHIPPING INFO
 export const saveShippingInfo =
-  (data: any) =>
+  (data: any): any =>
   async (dispatch: (arg0: { type: string; payload: any }) => void) => {
     dispatch({
       type: SAVE_SHIPPING_INFO,
