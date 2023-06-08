@@ -95,7 +95,8 @@ export const loadUser =
 
 // Logout User
 export const logout =
-  () => async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
+  (): any =>
+  async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       await axios.get(`/api/v1/logout`);
 
