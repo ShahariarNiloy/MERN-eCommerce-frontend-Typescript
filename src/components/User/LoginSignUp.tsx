@@ -115,7 +115,7 @@ const LoginSignUp: React.FC = () => {
 
   return (
     <Fragment>
-      {loading ? (
+      {false ? (
         <Loader />
       ) : (
         <Fragment>
