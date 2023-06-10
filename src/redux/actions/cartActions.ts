@@ -1,3 +1,4 @@
+import { BASE_URL } from "../../config";
 import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,
@@ -26,7 +27,7 @@ export const addItemsToCart =
       cart: { (): any; new (): any; cartItems: any };
     }
   ) => {
-    const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await axios.get(`${BASE_URL}/api/v1/product/${id}`);
 
     dispatch({
       type: ADD_TO_CART,

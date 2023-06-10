@@ -9,7 +9,7 @@ import RateReviewIcon from "@material-ui/icons/RateReview";
 import { TreeItem, TreeView } from "@material-ui/lab";
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../images/logo.png";
+import logo from "../../assets/images/logo.png";
 import "./Sidebar.css";
 
 const Sidebar: React.FC = () => {

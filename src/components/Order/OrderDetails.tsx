@@ -2,21 +2,18 @@ import { Typography } from "@material-ui/core";
 import React, { Fragment, useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { clearErrors, getOrderDetails } from "../../redux/actions/orderActions";
 import { RootState } from "../../redux/store";
 import Loader from "../Layout/Loader/Loader";
 import MetaData from "../Layout/MetaData";
 import "./OrderDetails.css";
 
-interface MatchParams {
-  match: any;
-}
-
-const OrderDetails: React.FC<MatchParams> = ({ match }) => {
+const OrderDetails: React.FC = () => {
   const { order, error, loading }: any = useSelector(
     (state: RootState) => state.orderDetails
   );
+  const { id }: any = useParams();
 
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -27,8 +24,8 @@ const OrderDetails: React.FC<MatchParams> = ({ match }) => {
       dispatch(clearErrors());
     }
 
-    dispatch(getOrderDetails(match.params.id));
-  }, [dispatch, alert, error, match.params.id]);
+    dispatch(getOrderDetails(id));
+  }, [dispatch, alert, error, id]);
 
   return (
     <Fragment>

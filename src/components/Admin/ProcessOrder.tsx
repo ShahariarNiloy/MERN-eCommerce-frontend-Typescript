@@ -3,7 +3,7 @@ import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getOrderDetails, updateOrder } from "../../redux/actions/orderActions";
 import { clearErrors } from "../../redux/actions/productActions";
 import { RootState } from "../../redux/store";
@@ -13,13 +13,8 @@ import MetaData from "../Layout/MetaData";
 import "./ProcessOrder.css";
 import SideBar from "./Sidebar";
 
-interface RouteParams {
-  id: string;
-}
-
-const ProcessOrder: React.FC<{
-  match: { params: RouteParams };
-}> = ({ match }) => {
+const ProcessOrder: React.FC = () => {
+  const { id }: any = useParams();
   const [status, setStatus] = useState("");
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -42,7 +37,7 @@ const ProcessOrder: React.FC<{
 
     myForm.set("status", status);
 
-    dispatch(updateOrder(match.params.id, myForm));
+    dispatch(updateOrder(id, myForm));
   };
 
   useEffect(() => {
@@ -59,8 +54,8 @@ const ProcessOrder: React.FC<{
       dispatch({ type: UPDATE_ORDER_RESET });
     }
 
-    dispatch(getOrderDetails(match.params.id));
-  }, [dispatch, alert, error, match.params.id, isUpdated, updateError]);
+    dispatch(getOrderDetails(id));
+  }, [dispatch, alert, error, id, isUpdated, updateError]);
 
   return (
     <Fragment>

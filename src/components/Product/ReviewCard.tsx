@@ -1,6 +1,6 @@
 import { Rating } from "@material-ui/lab";
 import React from "react";
-import profilePng from "../../images/Profile.png";
+import profilePng from "../../assets/images/Profile.png";
 
 interface Review {
   name: string;

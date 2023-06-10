@@ -4,7 +4,7 @@ import logo from "../../../assets/images/logo.png";
 
 const options = {
   burgerColorHover: "#eb4034",
-  logo: logo,
+  logo,
   logoWidth: "20vmax",
   navColor1: "white",
   logoHoverSize: "10px",

@@ -3,16 +3,17 @@ import "./ResetPassword.css";
 import Loader from "../Layout/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MetaData from "../Layout/MetaData";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockIcon from "@material-ui/icons/Lock";
 import { resetPassword, clearErrors } from "../../redux/actions/userActions";
 import { RootState } from "../../redux/store";
 
-const ResetPassword: React.FC<{ match: any }> = ({ match }) => {
+const ResetPassword: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { token }: any = useParams();
   const alert = useAlert();
 
   const { error, success, loading }: any = useSelector(
@@ -30,7 +31,7 @@ const ResetPassword: React.FC<{ match: any }> = ({ match }) => {
     myForm.set("password", password);
     myForm.set("confirmPassword", confirmPassword);
 
-    dispatch(resetPassword(match.params.token, myForm));
+    dispatch(resetPassword(token, myForm));
   };
 
   useEffect(() => {

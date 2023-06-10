@@ -21,6 +21,8 @@ import { UserType } from "../../redux/types/userTypes";
 import CheckoutSteps from "../Cart/CheckoutSteps";
 import MetaData from "../Layout/MetaData";
 import "./Payment.css";
+import { BASE_URL } from "../../config";
+import { StripeCardNumberElement } from "@stripe/stripe-js";
 
 const Payment = () => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo") as string);
@@ -67,7 +69,7 @@ const Payment = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        `${BASE_URL}/api/v1/payment/process`,
         paymentData,
         config
       );
@@ -78,7 +80,9 @@ const Payment = () => {
 
       const result = await stripe.confirmCardPayment(client_secret, {
         payment_method: {
-          card: elements.getElement(CardNumberElement),
+          card: elements.getElement(
+            CardNumberElement
+          ) as StripeCardNumberElement,
           billing_details: {
             name: user.name,
             email: user.email,

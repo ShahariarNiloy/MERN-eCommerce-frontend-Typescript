@@ -5,7 +5,7 @@ import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { clearErrors } from "../../redux/actions/productActions";
 import { getUserDetails, updateUser } from "../../redux/actions/userActions";
 import { RootState } from "../../redux/store";
@@ -14,11 +14,8 @@ import Loader from "../Layout/Loader/Loader";
 import MetaData from "../Layout/MetaData";
 import SideBar from "./Sidebar";
 
-interface UserProps {
-  match: any;
-}
-
-const UpdateUser: React.FC<UserProps> = ({ match }) => {
+const UpdateUser: React.FC = () => {
+  const { id }: any = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -37,7 +34,7 @@ const UpdateUser: React.FC<UserProps> = ({ match }) => {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
 
-  const userId = match.params.id;
+  const userId = id;
 
   useEffect(() => {
     if (user && user._id !== userId) {

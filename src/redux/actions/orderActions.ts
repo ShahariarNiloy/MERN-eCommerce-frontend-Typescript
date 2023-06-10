@@ -1,3 +1,4 @@
+import { BASE_URL } from "../../config";
 import {
   CREATE_ORDER_REQUEST,
   CREATE_ORDER_SUCCESS,
@@ -34,7 +35,11 @@ export const createOrder =
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.post("/api/v1/order/new", order, config);
+      const { data } = await axios.post(
+        `${BASE_URL}/api/v1/order/new`,
+        order,
+        config
+      );
 
       dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
     } catch (error: any) {
@@ -52,7 +57,7 @@ export const myOrders =
     try {
       dispatch({ type: MY_ORDERS_REQUEST });
 
-      const { data } = await axios.get("/api/v1/orders/me");
+      const { data } = await axios.get(`${BASE_URL}/api/v1/orders/me`);
 
       dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
     } catch (error: any) {
@@ -68,7 +73,7 @@ export const getAllOrders = (): any => async (dispatch: any) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/orders");
+    const { data } = await axios.get(`${BASE_URL}/api/v1/admin/orders`);
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
   } catch (error: any) {
@@ -92,7 +97,7 @@ export const updateOrder =
         },
       };
       const { data } = await axios.put(
-        `/api/v1/admin/order/${id}`,
+        `${BASE_URL}/api/v1/admin/order/${id}`,
         order,
         config
       );
@@ -113,7 +118,9 @@ export const deleteOrder =
     try {
       dispatch({ type: DELETE_ORDER_REQUEST });
 
-      const { data } = await axios.delete(`/api/v1/admin/order/${id}`);
+      const { data } = await axios.delete(
+        `${BASE_URL}/api/v1/admin/order/${id}`
+      );
 
       dispatch({ type: DELETE_ORDER_SUCCESS, payload: data.success });
     } catch (error: any) {
@@ -131,7 +138,7 @@ export const getOrderDetails =
     try {
       dispatch({ type: ORDER_DETAILS_REQUEST });
 
-      const { data } = await axios.get(`/api/v1/order/${id}`);
+      const { data } = await axios.get(`${BASE_URL}/api/v1/order/${id}`);
 
       dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
     } catch (error: any) {

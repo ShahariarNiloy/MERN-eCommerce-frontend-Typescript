@@ -6,12 +6,13 @@ import Loader from "../Layout/Loader/Loader";
 
 type CustomRouteProps = RouteProps & {
   isAdmin?: boolean;
-  component: React.ComponentType<any>;
+  element: any;
+  path: string;
 };
 
 const ProtectedRoute: React.FC<CustomRouteProps> = ({
   isAdmin,
-  component: Component,
+  element: Component,
   ...rest
 }) => {
   const { loading, isAuthenticated, user }: any = useSelector(

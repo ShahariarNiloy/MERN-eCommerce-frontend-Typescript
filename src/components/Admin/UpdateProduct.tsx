@@ -7,7 +7,7 @@ import StorageIcon from "@material-ui/icons/Storage";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   clearErrors,
   getProductDetails,
@@ -21,10 +21,11 @@ import {
 import MetaData from "../Layout/MetaData";
 import SideBar from "./Sidebar";
 
-const UpdateProduct: React.FC<{ match: any }> = ({ match }) => {
+const UpdateProduct: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
+  const { id }: any = useParams();
 
   const { error, product }: { error: any; product: ProductTypes } = useSelector(
     (state: RootState) => state.productDetails
@@ -55,7 +56,7 @@ const UpdateProduct: React.FC<{ match: any }> = ({ match }) => {
     "SmartPhones",
   ];
 
-  const productId = match.params.id;
+  const productId = id;
 
   useEffect(() => {
     if (product && product._id !== productId) {
