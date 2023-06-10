@@ -40,7 +40,7 @@ import axios from "axios";
 
 // Login
 export const login =
-  (email: any, password: any) =>
+  (email: any, password: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: LOGIN_REQUEST });
@@ -61,7 +61,7 @@ export const login =
 
 // Register
 export const register =
-  (userData: any) =>
+  (userData: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: REGISTER_USER_REQUEST });
@@ -81,7 +81,8 @@ export const register =
 
 // Load User
 export const loadUser =
-  () => async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
+  (): any =>
+  async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: LOAD_USER_REQUEST });
 
@@ -108,7 +109,7 @@ export const logout =
 
 // Update Profile
 export const updateProfile =
-  (userData: any) =>
+  (userData: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: UPDATE_PROFILE_REQUEST });
@@ -128,7 +129,7 @@ export const updateProfile =
 
 // Update Password
 export const updatePassword =
-  (passwords: any) =>
+  (passwords: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: UPDATE_PASSWORD_REQUEST });
@@ -152,7 +153,7 @@ export const updatePassword =
 
 // Forgot Password
 export const forgotPassword =
-  (email: any) =>
+  (email: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: FORGOT_PASSWORD_REQUEST });
@@ -176,7 +177,7 @@ export const forgotPassword =
 
 // Reset Password
 export const resetPassword =
-  (token: any, passwords: any) =>
+  (token: any, passwords: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: RESET_PASSWORD_REQUEST });
@@ -271,6 +272,6 @@ export const deleteUser =
 
 // Clearing Errors
 export const clearErrors =
-  () => async (dispatch: (arg0: { type: string }) => void) => {
+  (): any => async (dispatch: (arg0: { type: string }) => void) => {
     dispatch({ type: CLEAR_ERRORS });
   };
