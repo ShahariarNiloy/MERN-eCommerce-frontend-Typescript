@@ -189,7 +189,7 @@ export const getProductDetails =
 
 // NEW REVIEW
 export const newReview =
-  (reviewData: any) =>
+  (reviewData: any): any =>
   async (dispatch: (arg0: { type: string; payload?: any }) => void) => {
     try {
       dispatch({ type: NEW_REVIEW_REQUEST });
